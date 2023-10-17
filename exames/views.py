@@ -1,6 +1,7 @@
+import datetime
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import TiposExames
+from .models import PedidosExames, SolicitacaoExame, TiposExames
 from django.contrib.messages import constants
 from django.contrib import messages
 from django.contrib.auth import authenticate, login  
@@ -47,3 +48,10 @@ def fechar_pedido(request):
 
     messages.add_message(request, constants.SUCCESS, 'Pedido de exame concluído com sucesso')
     return redirect('/exames/ver_pedidos/')
+
+
+@login_required
+def gerenciar_pedidos(request):
+    pedidos_exames = PedidosExames.objects.filter(usuario=request.user)
+    return render(request, 'gerenciar_pedidos.html', {'pedidos_exames':pedidos_exames})
+
