@@ -27,7 +27,6 @@ LabOnline/
 ├── manage.py        # Script de gerenciamento Django
 └── db.sqlite3       # Banco de dados SQLite
 
-```plaintext
 
 ## 🔧 Instalação e Configuração
 
